@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for responsive sidebar */
+        @media (min-width: 768px) {
+            .sidebar {
+                flex: 0 0 250px; /* Fixed width for sidebar on larger screens */
+            }
+            .main-content {
+                flex: 1; /* Main content takes remaining space */
+            }
+        }
+        @media (max-width: 767px) {
+            .sidebar {
+                width: 100%; /* Full width on small screens */
+            }
+            .main-content {
+                width: 100%; /* Full width on small screens */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans flex flex-col md:flex-row min-h-screen">
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar bg-white shadow-lg p-6 md:p-8 flex flex-col items-center md:items-start">
+        <!-- Profile Section -->
+        <div class="text-center md:text-left mb-8">
+            <img src="/static/images/profile.jpg" alt="Profile" class="rounded-full mx-auto md:mx-0 mb-4" width="150" height="150">
+            <h1 class="text-2xl font-bold text-gray-800">Example Site</h1>
+            <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="w-full">
+            <ul class="space-y-2">
+                <li><a href="/" class="block py-2 px-4 rounded hover:bg-gray-200 text-gray-700 font-semibold">Home</a></li>
+                <li><a href="/blog" class="block py-2 px-4 rounded hover:bg-gray-200 text-gray-700 font-semibold">Blog</a></li>
+                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-200 text-gray-700 font-semibold">Archives</a></li>
+                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-200 text-gray-700 font-semibold">About</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content flex-1 p-6 md:p-8">
+        <section class="bg-white p-8 rounded-lg shadow-md text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Welcome to Our Awesome App!</h2>
+            <p class="text-lg text-gray-600 mb-6">Discover amazing features and content.</p>
+            <a href="/blog" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300">Explore Blog</a>
+        </section>
+    </main>
+
+</body>
+</html>

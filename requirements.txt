@@ -1,0 +1,4 @@
+Flask==3.0.0
+Jinja2
+markdown
+python-frontmatter

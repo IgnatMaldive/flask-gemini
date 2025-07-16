@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Example Site Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for responsive sidebar */
+        @media (min-width: 768px) {
+            .sidebar {
+                flex: 0 0 250px; /* Fixed width for sidebar on larger screens */
+            }
+            .main-content {
+                flex: 1; /* Main content takes remaining space */
+            }
+        }
+        @media (max-width: 767px) {
+            .sidebar {
+                width: 100%; /* Full width on small screens */
+            }
+            .main-content {
+                width: 100%; /* Full width on small screens */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans flex flex-col md:flex-row min-h-screen">
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar bg-white shadow-lg p-6 md:p-8 flex flex-col items-center md:items-start">
+        <!-- Profile Section -->
+        <div class="text-center md:text-left mb-8">
+            <img src="https://picsum.photos/seed/profile/150/150" alt="Profile" class="rounded-full mx-auto md:mx-0 mb-4" width="150" height="150">
+            <h1 class="text-2xl font-bold text-gray-800">Example Site</h1>
+            <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="w-full">
+            <ul class="space-y-2">
+                <li><a href="/" class="block py-2 px-4 rounded hover:bg-gray-200 text-gray-700 font-semibold">Home</a></li>
+                <li><a href="/blog" class="block py-2 px-4 rounded hover:bg-gray-200 text-gray-700 font-semibold">Blog</a></li>
+                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-200 text-gray-700 font-semibold">Archives</a></li>
+                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-200 text-gray-700 font-semibold">About</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content flex-1 p-6 md:p-8">
+        <article class="bg-white p-8 rounded-lg shadow-md">
+            {% if featured_image %}
+            <img src="{{ featured_image }}" alt="{{ title }}" class="w-full h-64 object-cover rounded-md mb-6" width="800" height="400">
+            {% endif %}
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">{{ title }}</h1>
+            <p class="text-gray-600 text-sm mb-4">{{ date }}</p>
+            <div class="prose max-w-none mb-6">
+                {{ content | safe }}
+            </div>
+            {% if tags %}
+            <div class="flex flex-wrap gap-2 mb-6">
+                {% for tag in tags %}
+                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="mt-8">
+                <a href="/blog" class="text-blue-500 hover:underline">&larr; Back to Blog</a>
+            </div>
+        </article>
+    </main>
+
+</body>
+</html>
